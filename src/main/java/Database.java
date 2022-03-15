@@ -28,7 +28,7 @@ public class Database {
 			Connection connection = DriverManager.getConnection(url, username,password);
 
 			this.statement = connection.createStatement();
-			//this.statement.execute("DROP TABLE chatHistory");
+			this.statement.execute("DROP TABLE channels");
 			String createTableString = "CREATE TABLE IF NOT EXISTS channels (id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, person BIGINT, channel BIGINT)";
 			this.statement.executeUpdate(createTableString);
 		} catch (Exception e) {
@@ -39,8 +39,13 @@ public class Database {
 
 	}
 
-	public void removeChannel(Long person, Long channel){
-		//todo make this remove the channel from the database
+	public void removeChannel(Long person){
+		try {
+			String databaseRemovalString = String.format("DELETE FROM channels WHERE person=%s",person);
+			this.statement.executeUpdate(databaseRemovalString);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void addChannel(Long person, Long channel) {

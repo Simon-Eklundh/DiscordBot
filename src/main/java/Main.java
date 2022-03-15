@@ -12,12 +12,11 @@ private static Database database = new Database();
 	public static void main(String[] args) {
 		// Insert your bot's token here
 
-
 		String token = SecretStrings.getToken();
 
 		DiscordApi api = new DiscordApiBuilder().setToken(token).login().join();
 
-		//textChannelPerPerson = database.getChannels();
+		textChannelPerPerson = database.getChannels();
 		api.addMessageCreateListener(new MessageCreateListener(textChannelPerPerson, database, api));
 
 
