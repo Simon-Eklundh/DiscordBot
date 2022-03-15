@@ -45,10 +45,15 @@ public class MessageCreateListener implements org.javacord.api.listener.message.
 						ServerTextChannelBuilder e = a.get().createTextChannelBuilder().setName("help-" + b.get().getName().toLowerCase(Locale.ROOT));
 						e.setCategory(d);
 
+						PermissionsBuilder p = new PermissionsBuilder();
+						p.setAllowed(PermissionType.SEND_MESSAGES).setAllowed(PermissionType.READ_MESSAGES).setAllowed(PermissionType.READ_MESSAGE_HISTORY);
+						//e.addPermissionOverwrite(b.get(),p.build());
+
 
 						CompletableFuture<ServerTextChannel> f = e.create();
 
 						ServerTextChannel h = f.get();
+						h.createUpdater().addPermissionOverwrite(b.get(), p.build()).update();
 						event.getChannel().sendMessage("join here " + h.getMentionTag());
 						channels.put(b.get().getId(), h.getId());
 						database.addChannel(b.get().getId(), h.getId());

@@ -6,12 +6,12 @@ import java.util.HashMap;
 public class Main {
 
 private static HashMap<Long,Long> textChannelPerPerson = new HashMap<>();
-private static Database database = new Database();
+//private static Database database = new Database();
 
 
 	public static void main(String[] args) {
 		// Insert your bot's token here
-
+		Database database = null;
 
 		String token = SecretStrings.getToken();
 
