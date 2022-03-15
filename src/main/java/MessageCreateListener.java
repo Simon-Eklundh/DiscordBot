@@ -6,7 +6,9 @@ import org.javacord.api.entity.permission.PermissionType;
 import org.javacord.api.entity.permission.PermissionsBuilder;
 import org.javacord.api.entity.server.Server;
 import org.javacord.api.entity.user.User;
+import org.javacord.api.event.interaction.SlashCommandCreateEvent;
 import org.javacord.api.event.message.MessageCreateEvent;
+import org.javacord.api.listener.interaction.SlashCommandCreateListener;
 
 import java.util.HashMap;
 import java.util.Locale;
@@ -82,4 +84,5 @@ public class MessageCreateListener implements org.javacord.api.listener.message.
 			}
 		}
 	}
+
 }
