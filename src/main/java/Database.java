@@ -2,22 +2,21 @@ import java.sql.*;
 import java.util.HashMap;
 
 public class Database {
-	private String url;
 	private Statement statement;
 
 	/**
 	 * constructor
-	 * creates a table for the chat if none already exists
+	 * creates a table for the channels if none already exists
 	 */
 	public Database() {
 		// database information, add your own to test the program (as mine should be private)
-		final String db_name = SecretStrings.getDBName();
-		final String username = SecretStrings.getUserName();
-		final String password = SecretStrings.getPassword();
-		final String computer = SecretStrings.getComputer();
-		final String port = SecretStrings.getPort();
+		final String db_name = SecretStrings.DB_NAME.getValue();
+		final String username = SecretStrings.USERNAME.getValue();
+		final String password = SecretStrings.PASSWORD.getValue();
+		final String computer = SecretStrings.COMPUTER.getValue();
+		final String port = SecretStrings.PORT.getValue();
 
-		this.url = "jdbc:mysql://" + computer + ":" +port+ "/" + db_name;
+		String url = "jdbc:mysql://" + computer + ":" + port + "/" + db_name;
 
 		try {
 
@@ -38,7 +37,10 @@ public class Database {
 		}
 
 	}
-
+	/**
+	 * removes a channel from the database
+	 * @param person the discord id of the user
+	 */
 	public void removeChannel(Long person){
 		try {
 			String databaseRemovalString = String.format("DELETE FROM channels WHERE person=%s",person);
@@ -48,9 +50,13 @@ public class Database {
 		}
 	}
 
+
+	/**
+	 * adds a channel to the database
+	 * @param person the discord id of the user
+	 * @param channel the discord id of the channel
+	 */
 	public void addChannel(Long person, Long channel) {
-
-
 		try {
 			String databaseInsertionString = String.format("INSERT INTO channels (person, channel) VALUES ('%s', '%s')", person, channel);
 			this.statement.executeUpdate(databaseInsertionString);
