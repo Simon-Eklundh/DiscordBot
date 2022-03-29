@@ -1,0 +1,4 @@
+run the following command at project root when the sql server is running
+
+
+mvn package && cp target/DiscordBot-1.0-SNAPSHOT-jar-with-dependencies.jar ./src/main/java/ && cd ./src/main/java/ && docker exec -it mysql hostname -I > serverip.txt && docker build -t app . && docker run --network docker_app-tier --name app4 app
