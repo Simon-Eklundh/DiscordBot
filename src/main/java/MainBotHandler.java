@@ -27,7 +27,9 @@ public class MainBotHandler {
 	private void InstantiateSlashCommands(DiscordApi api) {
 		SlashCommand.with("help", "command for people who need help").createGlobal(api).join();
 		SlashCommand.with("thanks", "command for people who have received help").createGlobal(api).join();
-		SlashCommand.with("link", "sends links", new SlashCommandOptionBuilder().setOptions(SlashCommandOptions.getLinkOptions())).createGlobal(api).join();
+		SlashCommand.with("link", "sends links", SlashCommandOptions.LINK_OPTIONS.getOptions() ).createGlobal(api).join();
+		//todo slashcommand for commands list
+		//todo remind me command
 	}
 
 	private void AddListeners(DiscordApi api, HashMap<Long, Long> textChannelPerPerson) {
