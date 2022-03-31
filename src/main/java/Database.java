@@ -10,7 +10,7 @@ public class Database {
 	 */
 	public Database() {
 		//ugly solution
-		SecretStrings.COMPUTER.setComputer();
+		//SecretStrings.COMPUTER.setComputer();
 
 		// database information, add your own to test the program (as mine should be private)
 		final String db_name = SecretStrings.DB_NAME.getValue();
@@ -21,7 +21,6 @@ public class Database {
 
 
 		String url = "jdbc:mysql://" + computer + ":" + port + "/" + db_name;
-	while (true){
 		try {
 
 			Class.forName("com.mysql.jdbc.Driver");
@@ -35,7 +34,6 @@ public class Database {
 			String createTableString = "CREATE TABLE IF NOT EXISTS channels (id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, person BIGINT, channel BIGINT)";
 			this.statement.executeUpdate(createTableString);
 			System.out.println("database done");
-			break;
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("---> COULD NOT CONNECT OR CREATE TABLE!");
@@ -43,7 +41,7 @@ public class Database {
 	}
 
 
-	}
+
 	/**
 	 * removes a channel from the database
 	 * @param person the discord id of the user

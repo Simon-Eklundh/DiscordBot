@@ -42,6 +42,15 @@ public class Slash implements SlashCommandCreateListener {
 		} else if (slashCommandInteraction.getCommandName().equals("thanks")) {
 			handleThanksCommand(slashCommandInteraction);
 		}
+		else if (slashCommandInteraction.getCommandName().equals("link")){
+			handleLinkCommand(slashCommandInteraction);
+		}
+	}
+
+	private void handleLinkCommand(SlashCommandInteraction slashCommandInteraction) {
+		if(slashCommandInteraction.getServer().isPresent()){
+			slashCommandInteraction.createImmediateResponder().appendNamedLink("javadoc", "https://docs.oracle.com/en/java/javase/17/docs/api/index.html").respond();
+		}
 	}
 
 	private void handleThanksCommand(SlashCommandInteraction slashCommandInteraction) {
