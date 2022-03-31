@@ -9,6 +9,9 @@ public class Database {
 	 * creates a table for the channels if none already exists
 	 */
 	public Database() {
+		//ugly solution
+		SecretStrings.COMPUTER.setComputer();
+
 		// database information, add your own to test the program (as mine should be private)
 		final String db_name = SecretStrings.DB_NAME.getValue();
 		final String username = SecretStrings.USERNAME.getValue();
@@ -16,8 +19,9 @@ public class Database {
 		final String computer = SecretStrings.COMPUTER.getValue();
 		final String port = SecretStrings.PORT.getValue();
 
-		String url = "jdbc:mysql://" + computer + ":" + port + "/" + db_name;
 
+		String url = "jdbc:mysql://" + computer + ":" + port + "/" + db_name;
+	while (true){
 		try {
 
 			Class.forName("com.mysql.jdbc.Driver");
@@ -27,14 +31,17 @@ public class Database {
 			Connection connection = DriverManager.getConnection(url, username,password);
 
 			this.statement = connection.createStatement();
-			this.statement.execute("DROP TABLE channels");
+			//this.statement.execute("DROP TABLE IF EXISTS channels");
 			String createTableString = "CREATE TABLE IF NOT EXISTS channels (id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, person BIGINT, channel BIGINT)";
 			this.statement.executeUpdate(createTableString);
+			System.out.println("database done");
+			break;
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("---> COULD NOT CONNECT OR CREATE TABLE!");
-			System.exit(-1);
 		}
+	}
+
 
 	}
 	/**

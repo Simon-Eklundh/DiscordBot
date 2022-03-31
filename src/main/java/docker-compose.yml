@@ -1,0 +1,17 @@
+version: '2'
+
+networks:
+  app-tier:
+    driver: bridge
+
+services:
+  mysql:
+    image: 'bitnami/mysql:latest'
+    container_name: "mysql"
+    environment:
+      - MYSQL_ROOT_PASSWORD=C9d7AB979BA7d9C
+      - MYSQL_DATABASE=data
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=138448
+    networks:
+      - app-tier

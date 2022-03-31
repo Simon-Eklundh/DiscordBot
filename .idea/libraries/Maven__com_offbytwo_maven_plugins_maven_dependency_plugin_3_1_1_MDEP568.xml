@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.offbytwo.maven.plugins:maven-dependency-plugin:3.1.1.MDEP568">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/offbytwo/maven/plugins/maven-dependency-plugin/3.1.1.MDEP568/maven-dependency-plugin-3.1.1.MDEP568.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/offbytwo/maven/plugins/maven-dependency-plugin/3.1.1.MDEP568/maven-dependency-plugin-3.1.1.MDEP568-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/offbytwo/maven/plugins/maven-dependency-plugin/3.1.1.MDEP568/maven-dependency-plugin-3.1.1.MDEP568-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
