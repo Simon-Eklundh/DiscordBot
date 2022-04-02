@@ -1,3 +1,4 @@
+import org.apache.commons.compress.archivers.cpio.CpioArchiveEntry;
 import org.javacord.api.DiscordApi;
 import org.javacord.api.DiscordApiBuilder;
 import org.javacord.api.interaction.SlashCommand;
@@ -22,13 +23,15 @@ public class MainBotHandler {
 		AddListeners(api, textChannelPerPerson);
 		// Print the invite url of your bot
 		System.out.println("You can invite the bot by using the following url: " + api.createBotInvite());
+
 	}
 
 	private void InstantiateSlashCommands(DiscordApi api) {
-		SlashCommand.with("help", "command for people who need help").createGlobal(api).join();
-		SlashCommand.with("thanks", "command for people who have received help").createGlobal(api).join();
-		SlashCommand.with("link", "sends links", SlashCommandOptions.LINK_OPTIONS.getOptions() ).createGlobal(api).join();
-		//todo slashcommand for commands list
+		SlashCommand.with(Commands.HELP.getName(), Commands.HELP.getDescription()).createGlobal(api).join();
+		SlashCommand.with(Commands.THANKS.getName(), Commands.THANKS.getDescription()).createGlobal(api).join();
+		SlashCommand.with(Commands.LINK.getName(), Commands.LINK.getDescription(), Commands.LINK.getOptions() ).createGlobal(api).join();
+		SlashCommand.with(Commands.REMIND.getName(), Commands.REMIND.getDescription(), Commands.REMIND.getOptions()).createGlobal(api).join();
+
 		//todo remind me command
 	}
 

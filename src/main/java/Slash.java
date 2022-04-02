@@ -33,17 +33,24 @@ public class Slash implements SlashCommandCreateListener {
 	 */
 	@Override
 	public void onSlashCommandCreate(SlashCommandCreateEvent event) {
-
 		SlashCommandInteraction slashCommandInteraction = event.getSlashCommandInteraction();
 
-		if (slashCommandInteraction.getCommandName().equals("help")) {
+		switch (slashCommandInteraction.getCommandName()){
+			case "help":
+				handleHelpCommand(slashCommandInteraction);
+				break;
+			case "thanks":
+				handleThanksCommand(slashCommandInteraction);
+				break;
+			case "link":
+				handleLinkCommand(slashCommandInteraction);
+				break;
+			case "remind":
 
-			handleHelpCommand(slashCommandInteraction);
-		} else if (slashCommandInteraction.getCommandName().equals("thanks")) {
-			handleThanksCommand(slashCommandInteraction);
-		} else if (slashCommandInteraction.getCommandName().equals("link")) {
-			handleLinkCommand(slashCommandInteraction);
+			default:
+				break;
 		}
+
 	}
 
 	private void handleLinkCommand(SlashCommandInteraction slashCommandInteraction) {
@@ -64,10 +71,6 @@ public class Slash implements SlashCommandCreateListener {
 				default:
 					break;
 			}
-
-
-
-
 		}
 	}
 
