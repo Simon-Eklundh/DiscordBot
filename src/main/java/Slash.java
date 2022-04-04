@@ -46,7 +46,7 @@ public class Slash implements SlashCommandCreateListener {
 				handleLinkCommand(slashCommandInteraction);
 				break;
 			case "remind":
-
+//todo
 			default:
 				break;
 		}
