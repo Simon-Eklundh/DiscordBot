@@ -13,13 +13,8 @@ public enum Commands {
 	LINK("link", "sends links to what is asked for", new ArrayList<>(Arrays.asList(SlashCommandOption.create(
 					SlashCommandOptionType.SUB_COMMAND, "jdk", "shows liberica jdk"),
 			SlashCommandOption.create(SlashCommandOptionType.SUB_COMMAND, "docker", "docker link"),
-			SlashCommandOption.create(SlashCommandOptionType.SUB_COMMAND, "jdoc", "gets link to javadoc")))),
-
-	//todo fix this
-	REMIND("remind", "reminds a user at a specific point", new ArrayList<>(Arrays.asList(SlashCommandOption.createWithChoices(
-					SlashCommandOptionType.USER, "the user to remind", "shows liberica jdk", true, SlashCommandOption.create(SlashCommandOptionType.DECIMAL,"time", " the time to remind someone", true)),
-			SlashCommandOption.create(SlashCommandOptionType.SUB_COMMAND, "docker", "docker link"),
 			SlashCommandOption.create(SlashCommandOptionType.SUB_COMMAND, "jdoc", "gets link to javadoc"))));
+
 
 
 

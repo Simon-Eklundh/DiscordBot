@@ -34,7 +34,7 @@ public class MainBotHandler {
 		SlashCommand.with(Commands.HELP.getName(), Commands.HELP.getDescription()).createGlobal(api).join();
 		SlashCommand.with(Commands.THANKS.getName(), Commands.THANKS.getDescription()).createGlobal(api).join();
 		SlashCommand.with(Commands.LINK.getName(), Commands.LINK.getDescription(), Commands.LINK.getOptions() ).createGlobal(api).join();
-		SlashCommand.with(Commands.REMIND.getName(), Commands.REMIND.getDescription(), Commands.REMIND.getOptions()).createGlobal(api).join();
+		//SlashCommand.with(Commands.REMIND.getName(), Commands.REMIND.getDescription(), Commands.REMIND.getOptions()).createGlobal(api).join();
 	}
 
 	private void AddListeners(DiscordApi api, HashMap<Long, Long> textChannelPerPerson) {
