@@ -33,7 +33,7 @@ public class Database {
 			this.statement = connection.createStatement();
 			this.channelDatabase  = new ChannelDatabase(statement);
 			this.reminderDatabase = new ReminderDatabase(statement);
-			//this.statement.execute("DROP TABLE IF EXISTS channels");
+			//this.statement.execute("DROP TABLE IF EXISTS channels"); //for clearing the channels table for the tests
 
 			System.out.println("database connection done");
 		} catch (Exception e) {
