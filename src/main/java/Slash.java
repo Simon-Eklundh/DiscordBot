@@ -33,14 +33,43 @@ public class Slash implements SlashCommandCreateListener {
 	 */
 	@Override
 	public void onSlashCommandCreate(SlashCommandCreateEvent event) {
-
 		SlashCommandInteraction slashCommandInteraction = event.getSlashCommandInteraction();
 
-		if (slashCommandInteraction.getCommandName().equals("help")) {
+		switch (slashCommandInteraction.getCommandName()){
+			case "help":
+				handleHelpCommand(slashCommandInteraction);
+				break;
+			case "thanks":
+				handleThanksCommand(slashCommandInteraction);
+				break;
+			case "link":
+				handleLinkCommand(slashCommandInteraction);
+				break;
+			//case "remind":
+			default:
+				break;
+		}
 
-			handleHelpCommand(slashCommandInteraction);
-		} else if (slashCommandInteraction.getCommandName().equals("thanks")) {
-			handleThanksCommand(slashCommandInteraction);
+	}
+
+	private void handleLinkCommand(SlashCommandInteraction slashCommandInteraction) {
+		if (slashCommandInteraction.getServer().isPresent()) {
+			if(slashCommandInteraction.getOptions().isEmpty()) return;
+
+
+			switch (slashCommandInteraction.getOptions().get(0).getName()){
+				case "jdoc":
+					slashCommandInteraction.createImmediateResponder().appendNamedLink("javadoc", "https://docs.oracle.com/en/java/javase/17/docs/api/index.html").respond();
+					break;
+				case "docker":
+					slashCommandInteraction.createImmediateResponder().appendNamedLink("docker", "https://hub.docker.com/").respond();
+					break;
+				case "jdk":
+					slashCommandInteraction.createImmediateResponder().appendNamedLink("liberica", "https://bell-sw.com/pages/downloads/#/java-17-lts").respond();
+					break;
+				default:
+					break;
+			}
 		}
 	}
 
@@ -90,10 +119,10 @@ public class Slash implements SlashCommandCreateListener {
 				}
 
 			} else {
-				if(api.getTextChannelById(channels.get(user.getId())).isPresent()){
+				if (api.getTextChannelById(channels.get(user.getId())).isPresent()) {
 					ServerTextChannel serverTextChannel = api.getServerTextChannelById(channels.get(user.getId())).get();
 					slashCommandInteraction.createImmediateResponder().setContent("join here " + serverTextChannel.getMentionTag()).respond();
-				}else{
+				} else {
 
 					channels.remove(user.getId());
 					database.removeChannel(user.getId());
@@ -103,7 +132,6 @@ public class Slash implements SlashCommandCreateListener {
 			}
 		}
 	}
-
 
 
 }
