@@ -11,7 +11,7 @@ public class Database {
 	 */
 	public Database() {
 		//ugly solution
-		//SecretStrings.COMPUTER.setComputer();
+		SecretStrings.COMPUTER.setComputer();
 
 		// database information, add your own to test the program (as mine should be private)
 		final String db_name = SecretStrings.DB_NAME.getValue();
