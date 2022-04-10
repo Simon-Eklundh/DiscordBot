@@ -67,6 +67,14 @@ public class Slash implements SlashCommandCreateListener {
 				case "jdk":
 					slashCommandInteraction.createImmediateResponder().appendNamedLink("liberica", "https://bell-sw.com/pages/downloads/#/java-17-lts").respond();
 					break;
+				case "youtube":
+					if(slashCommandInteraction.getOptionByName("youtube").get().getOptionStringValueByName("link").isEmpty()){
+						slashCommandInteraction.createImmediateResponder().appendNamedLink("youtube", "https://www.youtube.com/").respond();
+					}else{
+						slashCommandInteraction.createImmediateResponder().appendNamedLink(
+								"youtube/" + slashCommandInteraction.getOptionByName("youtube").get().getOptionStringValueByName("link").get(),
+								"https://www.youtube.com/results?search_query=" + slashCommandInteraction.getOptionByName("youtube").get().getOptionStringValueByName("link").get().replace(" ", "+")).respond();
+				}
 				default:
 					break;
 			}
@@ -116,6 +124,8 @@ public class Slash implements SlashCommandCreateListener {
 
 				} catch (InterruptedException | ExecutionException | IndexOutOfBoundsException ex) {
 					ex.printStackTrace();
+					slashCommandInteraction.createImmediateResponder().setContent("an error happened, is there a text chan" +
+							"nel category called helpchannels?").respond();
 				}
 
 			} else {
