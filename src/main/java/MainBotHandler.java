@@ -8,18 +8,18 @@ import java.util.HashMap;
 
 public class MainBotHandler {
 	//todo uncomment for when it's actually used
-	//private static final Database database = new Database();
+	private static final Database database = new Database();
 
 	public MainBotHandler() {
 		//discord bot token
-		String token = SecretStrings.TEST_TOKEN.getValue();
+		String token = SecretStrings.TOKEN.getValue();
 
 		DiscordApi api = new DiscordApiBuilder().setToken(token).login().join();
 
 
 		// database on or off todo (uncomment when using the database again
-		//HashMap<Long, Long> textChannelPerPerson = database.getChannels();
-		HashMap<Long, Long> textChannelPerPerson = new HashMap<>();
+		HashMap<Long, Long> textChannelPerPerson = database.getChannels();
+		//HashMap<Long, Long> textChannelPerPerson = new HashMap<>();
 
 
 		InstantiateSlashCommands(api);
@@ -38,7 +38,7 @@ public class MainBotHandler {
 	}
 
 	private void AddListeners(DiscordApi api, HashMap<Long, Long> textChannelPerPerson) {
-		api.addSlashCommandCreateListener(new Slash(textChannelPerPerson, null, api));
+		api.addSlashCommandCreateListener(new Slash(textChannelPerPerson, database, api));
 	}
 
 
