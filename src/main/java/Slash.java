@@ -110,7 +110,7 @@ public class Slash implements SlashCommandCreateListener {
 					textChannelBuilder.setCategory(channelCategory);
 
 					PermissionsBuilder permissionsBuilder = new PermissionsBuilder();
-					permissionsBuilder.setAllowed(PermissionType.SEND_MESSAGES).setAllowed(PermissionType.READ_MESSAGES).setAllowed(PermissionType.READ_MESSAGE_HISTORY);
+					permissionsBuilder.setAllowed(PermissionType.SEND_MESSAGES).setAllowed(PermissionType.READ_MESSAGE_HISTORY).setAllowed(PermissionType.READ_MESSAGE_HISTORY);
 
 
 					ServerTextChannel serverTextChannel = textChannelBuilder.create().get();

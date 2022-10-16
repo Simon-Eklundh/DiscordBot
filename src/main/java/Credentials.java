@@ -1,30 +1,30 @@
 public class Credentials {
 
-    String getTEST_TOKEN(){
+    static String getTEST_TOKEN() {
         return System.getenv("TEST_TOKEN");
     }
 
-    String getTOKEN() {
+    static String getTOKEN() {
         return System.getenv("TOKEN");
     }
 
-     String getDB_NAME() {
+    static String getDB_NAME() {
         return System.getenv("DB_NAME");
     }
 
-     String getUSERNAME() {
+    static String getUSERNAME() {
         return System.getenv("SQL_USERNAME");
     }
 
-     String getPASSWORD() {
+    static String getPASSWORD() {
         return System.getenv("SQL_PASSWORD");
     }
 
-     String getIP() {
+    static String getIP() {
         return System.getenv("IP");
     }
 
-     String getPORT() {
+    static String getPORT() {
         return System.getenv("PORT");
     }
 }

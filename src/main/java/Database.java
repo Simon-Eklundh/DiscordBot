@@ -10,15 +10,13 @@ public class Database {
 	 * creates a table for the channels if none already exists
 	 */
 	public Database() {
-		//ugly solution
-		SecretStrings.COMPUTER.setComputer();
 
 		// database information, add your own to test the program (as mine should be private)
-		final String db_name = SecretStrings.DB_NAME.getValue();
-		final String username = SecretStrings.USERNAME.getValue();
-		final String password = SecretStrings.PASSWORD.getValue();
-		final String computer = SecretStrings.COMPUTER.getValue();
-		final String port = SecretStrings.PORT.getValue();
+		final String db_name = Credentials.getDB_NAME();
+		final String username = Credentials.getUSERNAME();
+		final String password = Credentials.getPASSWORD();
+		final String computer = Credentials.getIP();
+		final String port = Credentials.getPORT();
 
 
 		String url = "jdbc:mysql://" + computer + ":" + port + "/" + db_name;
